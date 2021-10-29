@@ -79,10 +79,10 @@
 
 let date = new Date().getUTCDate();
 let year = new Date().getFullYear();
-let monnths = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
- let m = new Date().getMonth();
-let month = monnths.forEach((e,i)=>{
-    if(m == i){
+let monnths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+let m = new Date().getMonth();
+let month = monnths.forEach((e, i) => {
+    if (m == i) {
         m = e;
     }
 })
@@ -103,7 +103,7 @@ addBtn.addEventListener('click', () => {
 
     let inputvalue = input.value;
     let descValue = desc.value;
-    
+
     let notObj = {
         title: inputvalue,
         desc: descValue,
@@ -111,11 +111,13 @@ addBtn.addEventListener('click', () => {
         year: year,
         m: m
     }
-    
+
     noteArr.push(notObj);
     localStorage.setItem('notes', JSON.stringify(noteArr));
-
+    input.value = ''
+    desc.value = ''
     updateDisplay()
+
 })
 
 function updateDisplay() {
@@ -135,8 +137,8 @@ function updateDisplay() {
                 <p>${e.desc}</p>
                 <button class="btn btn-danger" id="${i}" onClick="btnclick(this.id)">Delete</button>
               </div>`;
-            })
-            container.innerHTML = html
+    })
+    container.innerHTML = html
 }
 
 
